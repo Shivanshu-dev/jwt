@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import Button from '../CustomButton/Button.tsx';
 import CustomInput from '../CustomInput/CustomInput.tsx';
 import { useCustomRef } from '../../customHooks/useCustomRef.tsx';
+import { registerUser } from '../../axiosApi/allApi.js';
 
 export type Props = {
 	registerPage: boolean;
@@ -16,6 +17,8 @@ const CustomForm: React.FunctionComponent<Props> = ({ registerPage }) => {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		const data = registerUser();
+		console.log('data return from axios', data);
 	};
 	const handleEmailInput = (e: ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
